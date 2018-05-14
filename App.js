@@ -15,27 +15,33 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={styles.head}>
-          <Text>#HigTodo!</Text>
+        <View style={styles.main}>
+          <View style={styles.header}>
+            <Text>#HigTodo!</Text>
+          </View>
+          <ScrollView style={styles.body}>
+            <AddTodo />
+            <VisibleTodoList />
+            <Footer />
+          </ScrollView>
         </View>
-        <ScrollView>
-          <AddTodo />
-          <VisibleTodoList />
-          <Footer />
-        </ScrollView>
       </Provider>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  head: {
+  main: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor: "#4A4A4A",
+    color: "#FFAD00"
   },
-  scroll: {},
-  header: {},
-  text: {}
+  header: {
+    flex: 1
+  },
+  body: {
+    flex: 1
+  }
 });
