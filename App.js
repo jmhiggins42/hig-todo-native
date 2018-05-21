@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
-import { Provider } from "redux";
-import { createStore } from "react-redux";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
 import rootReducer from "./reducers";
 
@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import AddTodo from "./containers/AddTodo";
 import VisibleTodoList from "./containers/VisibleTodoList";
 
-const store = createStore();
+const store = createStore(rootReducer);
 
 export default class App extends React.Component {
   render() {
@@ -17,7 +17,7 @@ export default class App extends React.Component {
       <Provider store={store}>
         <View style={styles.main}>
           <View style={styles.header}>
-            <Text>#HigTodo!</Text>
+            <Text style={styles.text}>#HigTodo!</Text>
           </View>
           <ScrollView style={styles.body}>
             <AddTodo />
@@ -33,15 +33,22 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    fontSize: 20,
     justifyContent: "center",
     backgroundColor: "#4A4A4A",
-    color: "#FFAD00"
+    paddingLeft: 10,
+    paddingRight: 10
   },
   header: {
-    flex: 0.2
+    flex: 0.2,
+    paddingTop: 24
   },
   body: {
     flex: 0.8
+  },
+  text: {
+    fontSize: 40,
+    fontWeight: "600",
+    color: "#FFAD00",
+    textAlign: "center"
   }
 });

@@ -10,7 +10,7 @@ class AddTodo extends React.Component {
   }
 
   render() {
-    const { addOne } = this.props;
+    const { dispatch } = this.props;
 
     return (
       <View>
@@ -22,7 +22,7 @@ class AddTodo extends React.Component {
         <Button
           onPress={() => {
             if (!this.state.text.trim()) return;
-            addOne(this.state.text);
+            dispatch(addTodo(this.state.text));
             this.setState({ text: "" });
           }}
           color="#FFAD00"
@@ -41,8 +41,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapDispatchToProps = dispatch => {
-  return { addOne: text => dispatch(addTodo(text)) };
-};
-
-export default connect(null, mapDispatchToProps)(AddTodo);
+export default connect()(AddTodo);

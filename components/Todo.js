@@ -1,12 +1,14 @@
 import React from "react";
-import { StyleSheet, View, TouchableWithoutFeedback } from "react-native";
+import { StyleSheet, View, Text, TouchableWithoutFeedback } from "react-native";
 import PropTypes from "prop-types";
 
 const Todo = ({ onPress, completed, text }) => (
   <View style={styles.todo}>
     <TouchableWithoutFeedback onPress={onPress}>
-      <View style={{ textDecoration: completed ? "line-through" : "none" }}>
-        {text}
+      <View>
+        <Text style={{ textDecoration: completed ? "line-through" : "none" }}>
+          {text}
+        </Text>
       </View>
     </TouchableWithoutFeedback>
   </View>
