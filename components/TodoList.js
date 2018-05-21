@@ -1,17 +1,21 @@
 import React from "react";
+import { View, FlatList } from "react-native";
 import PropTypes from "prop-types";
 import Todo from "./Todo";
 
-const TodoList = ({ todos, onTodoClick }) => (
-  <ul>
-    {todos.map((todo, index) => (
-      <Todo key={index} {...todo} onClick={() => onTodoClick(index)} />
-    ))}
-  </ul>
+const TodoList = ({ todos, onTodoPress }) => (
+  <View>
+    <FlatList
+      data={todos}
+      renderItem={({ item }) => (
+        <Todo {...item} onPress={() => onTodoPress(item.id)} />
+      )}
+    />
+  </View>
 );
 
 TodoList.propTypes = {
-  onTodoClick: PropTypes.func.isRequired,
+  onTodoPress: PropTypes.func.isRequired,
   todos: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

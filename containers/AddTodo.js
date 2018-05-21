@@ -1,26 +1,48 @@
 import React from "react";
+import { StyleSheet, View, TextInput, Button } from "react-native";
 import { connect } from "react-redux";
 import { addTodo } from "../actions";
 
-let AddTodo = ({ dispatch }) => {
-  let input;
-  return (
-    <div>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          if (!input.value.trim()) return;
-          dispatch(addTodo(input.value));
-          input.value = "";
-        }}
-      >
-        <input ref={node => (input = node)} />
-        <button type="submit">Add Todo</button>
-      </form>
-    </div>
-  );
+class AddTodo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { text: "" };
+  }
+
+  render() {
+    const { addOne } = this.props;
+
+    return (
+      <View>
+        <TextInput
+          style={styles.input}
+          onChangeText={text => this.setState({ text })}
+          value={this.state.text}
+        />
+        <Button
+          onPress={() => {
+            if (!this.state.text.trim()) return;
+            addOne(this.state.text);
+            this.setState({ text: "" });
+          }}
+          color="#FFAD00"
+          title="Add Todo"
+        />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  input: {
+    height: 30,
+    borderColor: "#FFAD00",
+    borderWidth: 1
+  }
+});
+
+const mapDispatchToProps = dispatch => {
+  return { addOne: text => dispatch(addTodo(text)) };
 };
 
-AddTodo = connect()(AddTodo);
-
-export default AddTodo;
+export default connect(null, mapDispatchToProps)(AddTodo);

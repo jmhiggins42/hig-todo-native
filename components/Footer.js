@@ -6,13 +6,11 @@ import FilterLink from "../containers/FilterLink";
 import { VisibilityFilters } from "../actions";
 
 const Footer = () => (
-  <Text>
-    Show: <FilterLink filter={VisibilityFilters.SHOW_ALL}>All</FilterLink>
-    {", "}
-    <FilterLink filter={VisibilityFilters.SHOW_ACTIVE}>Active</FilterLink>
-    {", "}
-    <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>Completed</FilterLink>
-  </Text>
+  <View>
+    Show: <FilterLink filter={VisibilityFilters.SHOW_ALL} title="All" />
+    <FilterLink filter={VisibilityFilters.SHOW_ACTIVE} title="Active" />
+    <FilterLink filter={VisibilityFilters.SHOW_COMPLETED} title="Completed" />
+  </View>
 );
 
 export default Footer;

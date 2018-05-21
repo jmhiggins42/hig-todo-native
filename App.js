@@ -1,7 +1,7 @@
 import React from "react";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { Provider } from "redux";
 import { createStore } from "react-redux";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
 
 import rootReducer from "./reducers";
 
@@ -33,15 +33,15 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    alignItems: "center",
+    fontSize: 20,
     justifyContent: "center",
     backgroundColor: "#4A4A4A",
     color: "#FFAD00"
   },
   header: {
-    flex: 1
+    flex: 0.2
   },
   body: {
-    flex: 1
+    flex: 0.8
   }
 });
