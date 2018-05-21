@@ -1,10 +1,18 @@
 import React from "react";
-import { Button } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
 import PropTypes from "prop-types";
 
 const Link = ({ active, title, onPress }) => (
-  <Button title={title} onPress={onPress} disabled={active} />
+  <View style={styles.button}>
+    <Button title={title} onPress={onPress} disabled={active} />
+  </View>
 );
+
+const styles = StyleSheet.create({
+  button: {
+    margin: 5
+  }
+});
 
 Link.propTypes = {
   active: PropTypes.bool.isRequired,

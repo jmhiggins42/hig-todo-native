@@ -10,7 +10,7 @@ const TodoList = ({ todos, onTodoPress }) => (
       renderItem={({ item }) => (
         <Todo {...item} onPress={() => onTodoPress(item.id)} />
       )}
-      keyExtractor={(item, index) => item.id}
+      keyExtractor={(item, index) => item.id.toString()}
     />
   </View>
 );
